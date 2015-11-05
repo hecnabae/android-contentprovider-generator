@@ -30,14 +30,14 @@ public class ${entity.nameCamelCase}Columns implements BaseColumns {
         </#if>
         <#if field.isId>
             <#if field.nameLowerCase == "_id">
-    public static final String _ID = BaseColumns._ID;
+    public static final String _ID = "${entity.nameLowerCase}__ID";
             <#else>
-    public static final String _ID = "${field.nameOrPrefixed}";
+    public static final String _ID = "${entity.nameLowerCase}__${field.nameOrPrefixed}";
 
-    public static final String ${field.nameUpperCase} = "${field.nameOrPrefixed}";
+    public static final String ${field.nameUpperCase} = "${entity.nameLowerCase}__${field.nameOrPrefixed}";
             </#if>
         <#else>
-    public static final String ${field.nameUpperCase} = "${field.nameOrPrefixed}";
+    public static final String ${field.nameUpperCase} = "${entity.nameLowerCase}__${field.nameOrPrefixed}";
         </#if>
 
     </#list>

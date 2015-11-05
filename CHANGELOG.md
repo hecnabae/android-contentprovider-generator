@@ -1,6 +1,10 @@
 Android ContentProvider Generator Changelog
 ===========================================
 
+v1.9.4 (2015-11-05)
+------
+- Rename _ID column to ${entity.nameLowerCase}__ID and update references to this column on Foreign keys.
+
 v1.9.3 (2015-07-18)
 ------
 - Updated content provider template to support ${applicationId} variable that is supported in the

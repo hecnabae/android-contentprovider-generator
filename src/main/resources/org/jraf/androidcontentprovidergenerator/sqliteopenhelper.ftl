@@ -28,6 +28,9 @@ public class ${config.sqliteOpenHelperClassName} extends SQLiteOpenHelper {
 
     // @formatter:off
     <#list model.entities as entity>
+    public static final String SQL_DROP_TABLE_${entity.nameUpperCase} = "DROP TABLE IF EXISTS "
+            + ${entity.nameCamelCase}Columns.TABLE_NAME;
+
     public static final String SQL_CREATE_TABLE_${entity.nameUpperCase} = "CREATE TABLE IF NOT EXISTS "
             + ${entity.nameCamelCase}Columns.TABLE_NAME + " ( "
             <#list entity.fields as field>
@@ -111,6 +114,9 @@ public class ${config.sqliteOpenHelperClassName} extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         if (BuildConfig.DEBUG) Log.d(TAG, "onCreate");
         mOpenHelperCallbacks.onPreCreate(mContext, db);
+        <#list model.entities as entity>
+        db.execSQL(SQL_DROP_TABLE_${entity.nameUpperCase});
+        </#list>
         <#list model.entities as entity>
         db.execSQL(SQL_CREATE_TABLE_${entity.nameUpperCase});
         <#list entity.fields as field>

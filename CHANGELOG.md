@@ -1,5 +1,8 @@
 Android ContentProvider Generator Changelog
 ===========================================
+v1.9.5 (2016-01-12)
+------
+- Added DROP functionality.
 
 v1.9.4 (2015-11-05)
 ------
